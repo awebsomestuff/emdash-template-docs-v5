@@ -1,0 +1,115 @@
+---
+import { getMenu, getSiteSettings } from "emdash";
+import { EmDashHead, EmDashBodyStart, EmDashBodyEnd } from "emdash/ui";
+import { createPublicPageContext } from "emdash/page";
+import "../styles/theme.css";
+
+interface Props {
+	title: string;
+	description?: string | null;
+	image?: string | null;
+	content?: { collection: string; id: string; slug?: string | null };
+}
+
+const { title, description, image, content } = Astro.props;
+const settings = await getSiteSettings();
+const menu = await getMenu("primary");
+
+const fullTitle = title === settings.title ? title : `${title} — ${settings.title}`;
+
+const pageCtx = createPublicPageContext({
+	Astro,
+	kind: content ? "content" : "custom",
+	pageType: "website",
+	title: fullTitle,
+	description,
+	image,
+	content,
+});
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{fullTitle}</title>
+		{description && <meta name="description" content={description} />}
+		<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📘</text></svg>" />
+		<script is:inline>
+			(function () {
+				var c = document.cookie;
+				var i = c.indexOf("theme=");
+				var theme = i >= 0 ? c.slice(i + 6).split(";")[0] : null;
+				if (theme === "dark" || theme === "light") {
+					document.documentElement.classList.add(theme);
+				} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					document.documentElement.classList.add("dark");
+				}
+			})();
+		</script>
+		<EmDashHead page={pageCtx} />
+	</head>
+	<body>
+		<EmDashBodyStart page={pageCtx} />
+
+		<header class="site-header">
+			<div class="header-inner">
+				<button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+				</button>
+				<a href="/" class="header-logo">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+					{settings.title}
+				</a>
+				<nav class="header-nav">
+					{menu?.items.map(item => (
+						<a href={item.url} target={item.target}>{item.label}</a>
+					))}
+				</nav>
+				<div class="header-search">
+					<slot name="search" />
+				</div>
+				<button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+					<svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+					<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+				</button>
+			</div>
+		</header>
+
+		<slot />
+
+		<footer class="site-footer">
+			<p>Built with <a href="https://emdashcms.com">EmDash CMS</a></p>
+		</footer>
+
+		<script is:inline>
+			document.getElementById("theme-toggle").addEventListener("click", function () {
+				var html = document.documentElement;
+				var isDark = html.classList.contains("dark");
+				html.classList.remove("dark", "light");
+				var next = isDark ? "light" : "dark";
+				html.classList.add(next);
+				document.cookie = "theme=" + next + ";path=/;max-age=31536000;SameSite=Lax";
+			});
+
+			var mobileToggle = document.getElementById("mobile-menu-toggle");
+			var sidebar = document.querySelector(".docs-sidebar");
+			var overlay = document.querySelector(".sidebar-overlay");
+
+			if (mobileToggle && sidebar) {
+				mobileToggle.addEventListener("click", function () {
+					sidebar.classList.toggle("open");
+					if (overlay) overlay.classList.toggle("active");
+				});
+				if (overlay) {
+					overlay.addEventListener("click", function () {
+						sidebar.classList.remove("open");
+						overlay.classList.remove("active");
+					});
+				}
+			}
+		</script>
+
+		<EmDashBodyEnd page={pageCtx} />
+	</body>
+</html>

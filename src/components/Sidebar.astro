@@ -1,0 +1,35 @@
+---
+interface DocGroup {
+	slug: string;
+	label: string;
+	docs: { slug: string; title: string }[];
+}
+
+interface Props {
+	sections: DocGroup[];
+	currentSlug: string;
+}
+
+const { sections, currentSlug } = Astro.props;
+---
+<aside class="docs-sidebar" id="docs-sidebar">
+	<nav>
+		{sections.map(section => (
+			<div class="sidebar-section">
+				<div class="sidebar-section-title">{section.label}</div>
+				<ul class="sidebar-links">
+					{section.docs.map(doc => (
+						<li>
+							<a
+								href={`/docs/${doc.slug}`}
+								class:list={["sidebar-link", { active: doc.slug === currentSlug }]}
+							>
+								{doc.title}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		))}
+	</nav>
+</aside>

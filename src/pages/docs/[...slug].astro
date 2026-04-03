@@ -1,0 +1,94 @@
+---
+import { getEmDashCollection, getEmDashEntry, getSeoMeta } from "emdash";
+import { PortableText } from "emdash/ui";
+import DocsLayout from "../../layouts/DocsLayout.astro";
+
+const { slug } = Astro.params;
+if (!slug) return Astro.redirect("/404");
+
+const { entry: doc, cacheHint } = await getEmDashEntry("docs", slug);
+if (!doc) return Astro.redirect("/404");
+
+const { entries: allDocs, cacheHint: listCacheHint } = await getEmDashCollection("docs", {
+	orderBy: { order: "asc" },
+});
+
+Astro.cache.set(cacheHint);
+Astro.cache.set(listCacheHint);
+
+const seo = getSeoMeta(doc, {
+	siteTitle: "Acme SDK",
+	siteUrl: Astro.url.origin,
+	path: `/docs/${slug}`,
+});
+
+// Group docs by section in defined order
+const sectionOrder = ["getting-started", "guides", "api-reference"];
+const sectionLabels: Record<string, string> = {
+	"getting-started": "Getting Started",
+	"guides": "Guides",
+	"api-reference": "API Reference",
+};
+
+const grouped = new Map<string, { slug: string; title: string }[]>();
+for (const d of allDocs) {
+	const sec = (d.data.section as string) || "other";
+	if (!grouped.has(sec)) grouped.set(sec, []);
+	grouped.get(sec)!.push({ slug: d.id, title: d.data.title });
+}
+
+const sections = sectionOrder
+	.filter(s => grouped.has(s))
+	.map(s => ({
+		slug: s,
+		label: sectionLabels[s] || s,
+		docs: grouped.get(s)!,
+	}));
+
+// Build flat ordered list for prev/next
+const flatDocs = sections.flatMap(s => s.docs);
+const currentIndex = flatDocs.findIndex(d => d.slug === slug);
+const prev = currentIndex > 0 ? flatDocs[currentIndex - 1] : null;
+const next = currentIndex < flatDocs.length - 1 ? flatDocs[currentIndex + 1] : null;
+
+// Extract headings from Portable Text for TOC
+interface Heading {
+	text: string;
+	id: string;
+	depth: number;
+}
+
+const headings: Heading[] = [];
+const content = doc.data.content as any[] | undefined;
+if (content) {
+	for (const block of content) {
+		if (block._type === "block" && (block.style === "h2" || block.style === "h3")) {
+			const text = (block.children || [])
+				.map((c: any) => c.text || "")
+				.join("");
+			const id = text
+				.toLowerCase()
+				.replace(/[^a-z0-9]+/g, "-")
+				.replace(/^-|-$/g, "");
+			headings.push({
+				text,
+				id,
+				depth: block.style === "h2" ? 2 : 3,
+			});
+		}
+	}
+}
+---
+<DocsLayout
+	title={doc.data.title}
+	description={doc.data.description as string | undefined}
+	section={doc.data.section as string | undefined}
+	sections={sections}
+	currentSlug={slug}
+	headings={headings}
+	prev={prev}
+	next={next}
+	content={{ collection: "docs", id: doc.data.id, slug }}
+>
+	<PortableText value={doc.data.content} />
+</DocsLayout>

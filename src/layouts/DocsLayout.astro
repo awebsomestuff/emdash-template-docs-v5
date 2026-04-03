@@ -1,0 +1,58 @@
+---
+import Base from "./Base.astro";
+import Sidebar from "../components/Sidebar.astro";
+import TableOfContents from "../components/TableOfContents.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PrevNext from "../components/PrevNext.astro";
+import SearchBar from "../components/SearchBar.astro";
+
+interface DocGroup {
+	slug: string;
+	label: string;
+	docs: { slug: string; title: string }[];
+}
+
+interface Heading {
+	text: string;
+	id: string;
+	depth: number;
+}
+
+interface NavDoc {
+	slug: string;
+	title: string;
+}
+
+interface Props {
+	title: string;
+	description?: string | null;
+	section?: string;
+	sections: DocGroup[];
+	currentSlug: string;
+	headings: Heading[];
+	prev?: NavDoc | null;
+	next?: NavDoc | null;
+	content?: { collection: string; id: string; slug?: string | null };
+}
+
+const { title, description, section, sections, currentSlug, headings, prev, next, content } = Astro.props;
+---
+<Base title={title} description={description} content={content}>
+	<SearchBar slot="search" />
+	<div class="docs-layout">
+		<div class="sidebar-overlay"></div>
+		<Sidebar sections={sections} currentSlug={currentSlug} />
+		<main class="docs-content">
+			<article class="prose">
+				<Breadcrumbs section={section} title={title} />
+				<h1>{title}</h1>
+				{description && <p class="doc-description">{description}</p>}
+				<slot />
+			</article>
+			<PrevNext prev={prev} next={next} />
+		</main>
+		{headings.length > 0 && (
+			<TableOfContents headings={headings} />
+		)}
+	</div>
+</Base>

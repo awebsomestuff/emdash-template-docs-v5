@@ -1,0 +1,3218 @@
+{
+	"$schema": "https://emdashcms.com/seed.schema.json",
+	"version": "1",
+	"meta": {
+		"name": "Docs",
+		"description": "A clean documentation template for EmDash CMS. Perfect for product docs, API references, and developer guides.",
+		"author": "EmDash Templates"
+	},
+	"settings": {
+		"title": "Acme SDK",
+		"tagline": "Documentation for the Acme SDK"
+	},
+	"collections": [
+		{
+			"slug": "docs",
+			"label": "Docs",
+			"labelSingular": "Doc",
+			"supports": [
+				"drafts",
+				"revisions",
+				"search",
+				"seo"
+			],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				},
+				{
+					"slug": "section",
+					"label": "Section",
+					"type": "string"
+				},
+				{
+					"slug": "order",
+					"label": "Order",
+					"type": "integer"
+				},
+				{
+					"slug": "description",
+					"label": "Description",
+					"type": "text"
+				}
+			]
+		},
+		{
+			"slug": "pages",
+			"label": "Pages",
+			"labelSingular": "Page",
+			"supports": [
+				"drafts",
+				"revisions",
+				"search",
+				"seo"
+			],
+			"fields": [
+				{
+					"slug": "title",
+					"label": "Title",
+					"type": "string",
+					"required": true,
+					"searchable": true
+				},
+				{
+					"slug": "content",
+					"label": "Content",
+					"type": "portableText",
+					"searchable": true
+				}
+			]
+		}
+	],
+	"menus": [
+		{
+			"name": "primary",
+			"label": "Primary Navigation",
+			"items": [
+				{
+					"type": "custom",
+					"label": "Home",
+					"url": "/"
+				},
+				{
+					"type": "custom",
+					"label": "Docs",
+					"url": "/docs/introduction"
+				},
+				{
+					"type": "custom",
+					"label": "GitHub",
+					"url": "https://github.com/acme/sdk"
+				}
+			]
+		}
+	],
+	"widgetAreas": [
+		{
+			"name": "footer",
+			"label": "Footer",
+			"description": "Footer widget area",
+			"widgets": [
+				{
+					"type": "content",
+					"title": "About Acme SDK",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Acme SDK is a powerful toolkit for building modern applications. This documentation is built with EmDash CMS."
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"content": {
+		"docs": [
+			{
+				"id": "doc-introduction",
+				"slug": "introduction",
+				"status": "published",
+				"data": {
+					"title": "Introduction",
+					"section": "getting-started",
+					"order": 10,
+					"description": "What Acme SDK is and why you should use it",
+					"content": [
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "What is Acme SDK?"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Acme SDK is a "
+								},
+								{
+									"_type": "span",
+									"text": "fully type-safe",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " TypeScript SDK for the Acme API platform. It provides a clean, intuitive interface for interacting with all Acme services — from resource management to real-time event streaming."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Key Features"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Type-safe by default",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Every method, parameter, and response is fully typed. Your editor will autocomplete every field and catch errors before runtime."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Lightweight and fast",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — The SDK ships under 12 KB gzipped with zero runtime dependencies. It won't bloat your bundle."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Universal runtime support",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Works in Node.js 18+, Deno, Bun, and all modern browsers. One import, any environment."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Built-in retries and error handling",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Automatic retries with exponential backoff, plus structured error types you can pattern-match against."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Quick Example"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Here's what working with Acme SDK looks like:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "import { AcmeClient } from '@acme/sdk';\n\nconst client = new AcmeClient({\n  apiKey: process.env.ACME_API_KEY,\n});\n\nconst projects = await client.projects.list();\nconsole.log(`Found ${projects.length} projects`);",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "What You'll Learn"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "This documentation covers everything from installation and initial setup to advanced patterns like pagination, streaming, and error recovery. Start with the "
+								},
+								{
+									"_type": "span",
+									"text": "Installation",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " guide to get the SDK added to your project, then follow the "
+								},
+								{
+									"_type": "span",
+									"text": "Quick Start",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " to make your first API call in under five minutes."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-installation",
+				"slug": "installation",
+				"status": "published",
+				"data": {
+					"title": "Installation",
+					"section": "getting-started",
+					"order": 20,
+					"description": "Install and set up the Acme SDK in your project",
+					"content": [
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Install the Package"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Install Acme SDK using your preferred package manager:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "npm install @acme/sdk",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "yarn add @acme/sdk",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "pnpm add @acme/sdk",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "System Requirements"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Node.js 18.0 or later",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — The SDK uses native "
+								},
+								{
+									"_type": "span",
+									"text": "fetch",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " and other modern APIs that require Node.js 18+."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "TypeScript 5.0 or later",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Required for full type inference support. The SDK uses "
+								},
+								{
+									"_type": "span",
+									"text": "const",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " type parameters and other features from TS 5.0."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Peer Dependencies"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Acme SDK has no required peer dependencies. However, if you plan to use the "
+								},
+								{
+									"_type": "span",
+									"text": "streaming",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " module, you will need to install "
+								},
+								{
+									"_type": "span",
+									"text": "eventsource-parser",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " separately:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "npm install eventsource-parser",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Verify Your Installation"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Create a test file to confirm everything is wired up correctly:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "import { AcmeClient, version } from '@acme/sdk';\n\nconsole.log(`Acme SDK v${version} loaded successfully`);",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Run it with "
+								},
+								{
+									"_type": "span",
+									"text": "npx tsx test.ts",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ". If you see the version printed, you're ready to continue to the Quick Start guide."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-quick-start",
+				"slug": "quick-start",
+				"status": "published",
+				"data": {
+					"title": "Quick Start",
+					"section": "getting-started",
+					"order": 30,
+					"description": "Make your first API call in under five minutes",
+					"content": [
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Overview"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "In this guide you will install the SDK, create a client instance, and make your first API request. By the end you'll have a working script that lists your Acme projects."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Step 1: Install the SDK"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "If you haven't already, add the SDK to your project:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "npm install @acme/sdk",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Step 2: Set Your API Key"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Create a "
+								},
+								{
+									"_type": "span",
+									"text": ".env",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " file in your project root and add your API key. You can find your key in the "
+								},
+								{
+									"_type": "span",
+									"text": "Acme Dashboard",
+									"marks": [
+										"em"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " under Settings > API Keys."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "ACME_API_KEY=sk_live_your_api_key_here",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Step 3: Create a Client and Make a Request"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Create a file called "
+								},
+								{
+									"_type": "span",
+									"text": "main.ts",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " with the following code:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "import 'dotenv/config';\nimport { AcmeClient } from '@acme/sdk';\n\nconst client = new AcmeClient({\n  apiKey: process.env.ACME_API_KEY,\n});\n\nasync function main() {\n  // List all projects in your account\n  const projects = await client.projects.list();\n\n  for (const project of projects) {\n    console.log(`${project.name} (${project.id})`);\n  }\n\n  // Create a new resource\n  const resource = await client.resources.create({\n    projectId: projects[0].id,\n    name: 'My First Resource',\n    type: 'document',\n  });\n\n  console.log('Created resource:', resource.id);\n}\n\nmain().catch(console.error);",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Step 4: Run It"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "npx tsx main.ts",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Expected Output"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "My Web App (proj_abc123)\nInternal Tools (proj_def456)\nCreated resource: res_ghi789",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Next Steps"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Now that you have a working setup, explore the "
+								},
+								{
+									"_type": "span",
+									"text": "Configuration",
+									"marks": [
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " guide to customize timeouts, retries, and base URLs. For a full reference of available methods, see the API Reference section."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-configuration",
+				"slug": "configuration",
+				"status": "published",
+				"data": {
+					"title": "Configuration",
+					"section": "getting-started",
+					"order": 40,
+					"description": "Customize client behavior with options and environment variables",
+					"content": [
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Configuration Options"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The "
+								},
+								{
+									"_type": "span",
+									"text": "AcmeClient",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " constructor accepts a configuration object with the following options:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "apiKey",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string, required) — Your Acme API key. Starts with "
+								},
+								{
+									"_type": "span",
+									"text": "sk_live_",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " for production or "
+								},
+								{
+									"_type": "span",
+									"text": "sk_test_",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " for sandbox environments."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "baseUrl",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string, optional) — Override the default API base URL. Defaults to "
+								},
+								{
+									"_type": "span",
+									"text": "https://api.acme.io/v1",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ". Useful for proxied or self-hosted environments."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "timeout",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (number, optional) — Request timeout in milliseconds. Defaults to "
+								},
+								{
+									"_type": "span",
+									"text": "30000",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (30 seconds)."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "retries",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (number, optional) — Maximum number of automatic retries on transient errors (5xx, network failures). Defaults to "
+								},
+								{
+									"_type": "span",
+									"text": "2",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": "."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "debug",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (boolean, optional) — When "
+								},
+								{
+									"_type": "span",
+									"text": "true",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", logs all HTTP requests and responses to the console. Defaults to "
+								},
+								{
+									"_type": "span",
+									"text": "false",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ". Never enable in production."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const client = new AcmeClient({\n  apiKey: 'sk_live_...',\n  baseUrl: 'https://api.acme.io/v1',\n  timeout: 15000,\n  retries: 3,\n  debug: false,\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Environment Variables"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The SDK automatically reads the "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_API_KEY",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " environment variable. If set, you can create a client without passing "
+								},
+								{
+									"_type": "span",
+									"text": "apiKey",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " explicitly:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "// Reads ACME_API_KEY from environment automatically\nconst client = new AcmeClient();",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "You can also set "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_BASE_URL",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " and "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_DEBUG=true",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " as environment variables. Explicit constructor options always take precedence over environment variables."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Configuration File"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "For projects that need shared configuration, create an "
+								},
+								{
+									"_type": "span",
+									"text": "acme.config.ts",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " file in your project root:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "import { defineConfig } from '@acme/sdk';\n\nexport default defineConfig({\n  apiKey: process.env.ACME_API_KEY,\n  timeout: 20000,\n  retries: 3,\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Then import it wherever you create a client:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "import config from './acme.config';\nimport { AcmeClient } from '@acme/sdk';\n\nconst client = new AcmeClient(config);",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Runtime Configuration Override"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "You can override configuration per-request using the "
+								},
+								{
+									"_type": "span",
+									"text": "requestOptions",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " parameter available on every method. This is useful for one-off timeout adjustments or adding custom headers:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "// Override timeout for a slow endpoint\nconst report = await client.reports.generate(\n  { type: 'annual' },\n  { timeout: 120000 }\n);\n\n// Add a custom header for a single request\nconst result = await client.resources.list(\n  {},\n  { headers: { 'X-Request-Id': 'custom-123' } }\n);",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-authentication",
+				"slug": "authentication",
+				"status": "published",
+				"data": {
+					"title": "Authentication",
+					"section": "guides",
+					"order": 10,
+					"description": "Learn how to authenticate with the Acme SDK using API keys, OAuth 2.0, and token refresh strategies.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The Acme SDK supports multiple authentication methods depending on your use case. This guide covers API key authentication for server-side applications and OAuth 2.0 for user-facing integrations."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "API Key Authentication"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The simplest way to authenticate is with an API key. Generate one from your Acme Dashboard under Settings > API Keys. Pass it when initializing the client:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const client = new AcmeClient({\n  apiKey: process.env.ACME_API_KEY,\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "OAuth 2.0 Flow"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "For applications that act on behalf of users, use the OAuth 2.0 authorization code flow. First, redirect the user to the authorization URL:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const authUrl = client.auth.getAuthorizationUrl({\n  clientId: process.env.ACME_CLIENT_ID,\n  redirectUri: 'https://yourapp.com/callback',\n  scope: ['read', 'write'],\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "After the user authorizes, exchange the code for an access token:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const tokens = await client.auth.exchangeCode({\n  code: authorizationCode,\n  redirectUri: 'https://yourapp.com/callback',\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Token Refresh"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Access tokens expire after 1 hour. Use the "
+								},
+								{
+									"_type": "span",
+									"text": "refreshToken",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " to obtain a new access token without requiring the user to re-authorize. The SDK handles this automatically when you enable "
+								},
+								{
+									"_type": "span",
+									"text": "autoRefresh: true",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " in the client configuration."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Security Best Practices"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Never expose API keys in client-side code or commit them to version control. Use environment variables and a "
+								},
+								{
+									"_type": "span",
+									"text": ".env",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " file for local development. Rotate keys periodically and use scoped tokens with the minimum required permissions."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-data-fetching",
+				"slug": "data-fetching",
+				"status": "published",
+				"data": {
+					"title": "Data Fetching",
+					"section": "guides",
+					"order": 20,
+					"description": "Query, filter, and paginate data efficiently with the Acme SDK.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The Acme SDK provides a fluent API for querying resources. This guide covers basic queries, filtering, pagination, and caching strategies for optimal performance."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Basic Queries"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Fetch a single resource by ID or retrieve a collection. All query methods return typed responses:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const resource = await client.resources.get('res_abc123');\nconst allResources = await client.resources.list();",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Filtering"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Use the "
+								},
+								{
+									"_type": "span",
+									"text": "where",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " option to filter results. Filters support equality, comparison operators, and logical combinators:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const active = await client.resources.list({\n  where: {\n    status: 'active',\n    createdAt: { $gte: '2025-01-01' },\n  },\n  orderBy: { createdAt: 'desc' },\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Cursor-Based Pagination"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "For large datasets, use cursor-based pagination. Each response includes a "
+								},
+								{
+									"_type": "span",
+									"text": "nextCursor",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " field when more results are available:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "let cursor = undefined;\ndo {\n  const page = await client.resources.list({\n    limit: 50,\n    cursor,\n  });\n  processItems(page.data);\n  cursor = page.nextCursor;\n} while (cursor);",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Caching Strategies"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The SDK supports built-in response caching. Enable it by passing a "
+								},
+								{
+									"_type": "span",
+									"text": "cache",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " option to the client. The default TTL is 60 seconds. For server-side applications, consider using a shared cache like Redis by implementing the "
+								},
+								{
+									"_type": "span",
+									"text": "CacheAdapter",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " interface."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const client = new AcmeClient({\n  apiKey: process.env.ACME_API_KEY,\n  cache: { ttl: 120, adapter: new RedisAdapter(redisClient) },\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-error-handling",
+				"slug": "error-handling",
+				"status": "published",
+				"data": {
+					"title": "Error Handling",
+					"section": "guides",
+					"order": 30,
+					"description": "Handle errors gracefully with typed error classes and retry strategies.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The Acme SDK throws typed errors that make it easy to handle specific failure cases. All errors extend the base AcmeError class and include an error code, message, and optional metadata."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Error Types"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "AcmeError",
+									"marks": [
+										"code",
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Base error class. All SDK errors inherit from this. Contains "
+								},
+								{
+									"_type": "span",
+									"text": "code",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", "
+								},
+								{
+									"_type": "span",
+									"text": "message",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", and "
+								},
+								{
+									"_type": "span",
+									"text": "statusCode",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " properties."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "ValidationError",
+									"marks": [
+										"code",
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Thrown when request parameters fail validation. The "
+								},
+								{
+									"_type": "span",
+									"text": "errors",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " array contains field-level details about what went wrong."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "RateLimitError",
+									"marks": [
+										"code",
+										"strong"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Thrown when you exceed the API rate limit. Includes "
+								},
+								{
+									"_type": "span",
+									"text": "retryAfter",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (in seconds) indicating when you can retry the request."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Try/Catch Patterns"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Use instanceof checks to handle specific error types:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "try {\n  await client.resources.create({ name: '' });\n} catch (err) {\n  if (err instanceof ValidationError) {\n    console.log('Invalid fields:', err.errors);\n  } else if (err instanceof RateLimitError) {\n    console.log(`Retry after ${err.retryAfter}s`);\n  } else if (err instanceof AcmeError) {\n    console.log(`API error ${err.code}: ${err.message}`);\n  }\n}",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Common Error Codes"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "INVALID_API_KEY",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (401) — The API key is missing or invalid. "
+								},
+								{
+									"_type": "span",
+									"text": "RESOURCE_NOT_FOUND",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (404) — The requested resource does not exist. "
+								},
+								{
+									"_type": "span",
+									"text": "RATE_LIMIT_EXCEEDED",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (429) — Too many requests. "
+								},
+								{
+									"_type": "span",
+									"text": "INTERNAL_ERROR",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (500) — An unexpected server error occurred."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Retry Strategies"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Enable automatic retries for transient errors by setting "
+								},
+								{
+									"_type": "span",
+									"text": "maxRetries",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " in the client configuration. The SDK uses exponential backoff and automatically retries on 429 and 5xx status codes:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "const client = new AcmeClient({\n  apiKey: process.env.ACME_API_KEY,\n  maxRetries: 3,\n  retryDelay: 1000,\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-deployment",
+				"slug": "deployment",
+				"status": "published",
+				"data": {
+					"title": "Deployment",
+					"section": "guides",
+					"order": 40,
+					"description": "Deploy your Acme SDK integration to Cloudflare Workers, Vercel, or a Node.js server.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "This guide covers deploying applications that use the Acme SDK across different environments and platforms."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Environment Setup"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The SDK uses the "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_API_KEY",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " and "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_ENVIRONMENT",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " environment variables. Set "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_ENVIRONMENT",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " to "
+								},
+								{
+									"_type": "span",
+									"text": "development",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", "
+								},
+								{
+									"_type": "span",
+									"text": "staging",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", or "
+								},
+								{
+									"_type": "span",
+									"text": "production",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " to control which API endpoint the SDK targets."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Cloudflare Workers"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The SDK is fully compatible with the Workers runtime. Store your API key as a secret using "
+								},
+								{
+									"_type": "span",
+									"text": "wrangler secret put ACME_API_KEY",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " and access it from the environment bindings:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "export default {\n  async fetch(request, env) {\n    const client = new AcmeClient({\n      apiKey: env.ACME_API_KEY,\n      environment: 'production',\n    });\n    const data = await client.resources.list();\n    return Response.json(data);\n  },\n};",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Vercel"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Add your API key in the Vercel dashboard under Settings > Environment Variables. The SDK works in both Serverless Functions and Edge Functions. For Edge, make sure to import from "
+								},
+								{
+									"_type": "span",
+									"text": "@acme/sdk/edge",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": "."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Node.js Server"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "For traditional Node.js deployments, load environment variables from a "
+								},
+								{
+									"_type": "span",
+									"text": ".env",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " file in development and from your hosting provider's secret management in production:"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "import 'dotenv/config';\nimport { AcmeClient } from '@acme/sdk';\n\nconst client = new AcmeClient({\n  apiKey: process.env.ACME_API_KEY,\n  environment: process.env.ACME_ENVIRONMENT,\n});",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Environment Variables Reference"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "ACME_API_KEY",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (required) — Your API key. "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_ENVIRONMENT",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Target environment: development, staging, or production. Defaults to production. "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_BASE_URL",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Override the API base URL for self-hosted instances. "
+								},
+								{
+									"_type": "span",
+									"text": "ACME_TIMEOUT",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Request timeout in milliseconds. Defaults to 30000."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-client",
+				"slug": "client",
+				"status": "published",
+				"data": {
+					"title": "Client",
+					"section": "api-reference",
+					"order": 10,
+					"description": "API reference for the AcmeClient class, constructor options, and core methods.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The "
+								},
+								{
+									"_type": "span",
+									"text": "AcmeClient",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " class is the main entry point for interacting with the Acme API. It manages authentication, connection pooling, and provides access to all resource endpoints."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Constructor"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "new AcmeClient(config: AcmeConfig)",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "AcmeConfig Options"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "apiKey",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string, required) — Your API key. "
+								},
+								{
+									"_type": "span",
+									"text": "environment",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string) — Target environment. One of "
+								},
+								{
+									"_type": "span",
+									"text": "'development' | 'staging' | 'production'",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ". Defaults to "
+								},
+								{
+									"_type": "span",
+									"text": "'production'",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ". "
+								},
+								{
+									"_type": "span",
+									"text": "baseUrl",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string) — Override the API base URL. "
+								},
+								{
+									"_type": "span",
+									"text": "timeout",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (number) — Request timeout in ms. Defaults to 30000. "
+								},
+								{
+									"_type": "span",
+									"text": "maxRetries",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (number) — Maximum retry attempts for failed requests. Defaults to 0. "
+								},
+								{
+									"_type": "span",
+									"text": "cache",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (CacheConfig | false) — Cache configuration or false to disable."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Methods"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "connect()"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.connect(): Promise<void>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Establishes a persistent connection to the Acme API. Required when using WebSocket-based real-time subscriptions. For standard REST calls, connection is handled automatically."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "disconnect()"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.disconnect(): Promise<void>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Closes the persistent connection and cleans up resources. Always call this when shutting down your application to avoid connection leaks."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "getStatus()"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.getStatus(): ConnectionStatus",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Returns the current connection status. Possible values: "
+								},
+								{
+									"_type": "span",
+									"text": "'connected' | 'disconnected' | 'connecting' | 'error'",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": "."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-endpoints",
+				"slug": "endpoints",
+				"status": "published",
+				"data": {
+					"title": "Endpoints",
+					"section": "api-reference",
+					"order": 20,
+					"description": "Complete reference for all available API endpoints including Resources and Users.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "All endpoints are accessed through the AcmeClient instance. Each endpoint group provides standard CRUD methods with full TypeScript support."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Resources"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "resources.list(options?)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.resources.list(options?: ListOptions): Promise<PaginatedResponse<Resource>>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Retrieves a paginated list of resources. Options include "
+								},
+								{
+									"_type": "span",
+									"text": "limit",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", "
+								},
+								{
+									"_type": "span",
+									"text": "cursor",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", "
+								},
+								{
+									"_type": "span",
+									"text": "where",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", and "
+								},
+								{
+									"_type": "span",
+									"text": "orderBy",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": "."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "resources.get(id)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.resources.get(id: string): Promise<Resource>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Retrieves a single resource by its unique ID. Throws "
+								},
+								{
+									"_type": "span",
+									"text": "AcmeError",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " with code "
+								},
+								{
+									"_type": "span",
+									"text": "RESOURCE_NOT_FOUND",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " if the resource does not exist."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "resources.create(data)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.resources.create(data: CreateResourceInput): Promise<Resource>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Creates a new resource. Required fields: "
+								},
+								{
+									"_type": "span",
+									"text": "name",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string), "
+								},
+								{
+									"_type": "span",
+									"text": "type",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string). Optional: "
+								},
+								{
+									"_type": "span",
+									"text": "metadata",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (Record<string, unknown>), "
+								},
+								{
+									"_type": "span",
+									"text": "tags",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string[])."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "resources.update(id, data)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.resources.update(id: string, data: UpdateResourceInput): Promise<Resource>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Updates an existing resource. Supports partial updates — only provided fields are modified."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "resources.delete(id)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.resources.delete(id: string): Promise<void>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Permanently deletes a resource. This action cannot be undone."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Users"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "users.list(options?)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.users.list(options?: ListOptions): Promise<PaginatedResponse<User>>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Retrieves a paginated list of users. Supports the same filtering and ordering options as resources."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "users.get(id)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.users.get(id: string): Promise<User>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Retrieves a user by ID. Returns the full user profile including "
+								},
+								{
+									"_type": "span",
+									"text": "email",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", "
+								},
+								{
+									"_type": "span",
+									"text": "role",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ", and "
+								},
+								{
+									"_type": "span",
+									"text": "lastLoginAt",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": "."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "users.create(data)"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "client.users.create(data: CreateUserInput): Promise<User>",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — Creates a new user. Required fields: "
+								},
+								{
+									"_type": "span",
+									"text": "email",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string), "
+								},
+								{
+									"_type": "span",
+									"text": "name",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string). Optional: "
+								},
+								{
+									"_type": "span",
+									"text": "role",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " (string, defaults to "
+								},
+								{
+									"_type": "span",
+									"text": "'member'",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": ")."
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"id": "doc-types",
+				"slug": "types",
+				"status": "published",
+				"data": {
+					"title": "Types",
+					"section": "api-reference",
+					"order": 30,
+					"description": "TypeScript type definitions for all SDK interfaces, response types, and error classes.",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "The Acme SDK is written in TypeScript and exports all types for use in your application. This reference covers the core types you will work with."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Core Types"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Resource"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "interface Resource {\n  id: string;\n  name: string;\n  type: string;\n  status: 'active' | 'archived';\n  metadata: Record<string, unknown>;\n  tags: string[];\n  createdAt: string;\n  updatedAt: string;\n}",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "User"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "interface User {\n  id: string;\n  email: string;\n  name: string;\n  role: 'admin' | 'member' | 'viewer';\n  lastLoginAt: string | null;\n  createdAt: string;\n}",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "AcmeConfig"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "interface AcmeConfig {\n  apiKey: string;\n  environment?: 'development' | 'staging' | 'production';\n  baseUrl?: string;\n  timeout?: number;\n  maxRetries?: number;\n  cache?: CacheConfig | false;\n}",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Response Types"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "ApiResponse<T>"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "interface ApiResponse<T> {\n  data: T;\n  meta: {\n    requestId: string;\n    timestamp: string;\n  };\n}",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h3",
+							"children": [
+								{
+									"_type": "span",
+									"text": "PaginatedResponse<T>"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "interface PaginatedResponse<T> {\n  data: T[];\n  nextCursor: string | null;\n  totalCount: number;\n  meta: {\n    requestId: string;\n    timestamp: string;\n  };\n}",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Error Types"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "class AcmeError extends Error {\n  code: string;\n  statusCode: number;\n}\n\nclass ValidationError extends AcmeError {\n  errors: { field: string; message: string }[];\n}\n\nclass RateLimitError extends AcmeError {\n  retryAfter: number;\n}",
+									"marks": [
+										"code"
+									]
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"pages": [
+			{
+				"id": "page-changelog",
+				"slug": "changelog",
+				"status": "published",
+				"data": {
+					"title": "Changelog",
+					"content": [
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "v2.1.0 — March 2026"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Added ",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"text": "cache",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " configuration option with pluggable adapters. Added cursor-based pagination helpers. Improved TypeScript generics for better type inference on filtered queries."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "v2.0.0 — January 2026"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Major release with breaking changes. Migrated to native ",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"text": "fetch",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " — dropped the axios dependency. New error class hierarchy with ",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"text": "AcmeError",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " base class. Minimum Node.js version raised to 18. OAuth 2.0 support added."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "v1.5.0 — October 2025"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Added Users endpoints. Improved retry logic with exponential backoff. Added ",
+									"marks": []
+								},
+								{
+									"_type": "span",
+									"text": "debug",
+									"marks": [
+										"code"
+									]
+								},
+								{
+									"_type": "span",
+									"text": " configuration option for logging."
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "h2",
+							"children": [
+								{
+									"_type": "span",
+									"text": "v1.0.0 — June 2025"
+								}
+							]
+						},
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Initial release with Resources CRUD, API key authentication, automatic retries, and full TypeScript support."
+								}
+							]
+						}
+					]
+				}
+			}
+		]
+	}
+}

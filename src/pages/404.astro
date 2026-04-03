@@ -1,0 +1,12 @@
+---
+import Base from "../layouts/Base.astro";
+import SearchBar from "../components/SearchBar.astro";
+---
+<Base title="Page Not Found">
+	<SearchBar slot="search" />
+	<div class="not-found" style={`margin-top: var(--header-height)`}>
+		<h1>404</h1>
+		<p>The page you're looking for doesn't exist.</p>
+		<a href="/" class="btn btn-primary">Go home</a>
+	</div>
+</Base>

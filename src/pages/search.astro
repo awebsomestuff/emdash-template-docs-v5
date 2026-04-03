@@ -1,0 +1,15 @@
+---
+import Base from "../layouts/Base.astro";
+import LiveSearch from "emdash/ui/search";
+import SearchBar from "../components/SearchBar.astro";
+---
+<Base title="Search">
+	<SearchBar slot="search" />
+	<div class="search-page" style={`margin-top: var(--header-height)`}>
+		<h1>Search Documentation</h1>
+		<LiveSearch
+			placeholder="Search docs..."
+			collections={["docs", "pages"]}
+		/>
+	</div>
+</Base>

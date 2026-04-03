@@ -1,0 +1,38 @@
+---
+import { getSiteSettings } from "emdash";
+import Base from "../layouts/Base.astro";
+import SearchBar from "../components/SearchBar.astro";
+
+const settings = await getSiteSettings();
+---
+<Base title={settings.title || "Documentation"} description={settings.tagline}>
+	<SearchBar slot="search" />
+	<div style={`margin-top: var(--header-height)`}>
+		<section class="hero">
+			<h1>{settings.title}</h1>
+			<p>{settings.tagline}</p>
+			<div class="hero-actions">
+				<a href="/docs/introduction" class="btn btn-primary">Get Started</a>
+				<a href="/docs/quick-start" class="btn btn-secondary">Quick Start</a>
+			</div>
+		</section>
+
+		<section class="sections-grid">
+			<a href="/docs/introduction" class="section-card">
+				<h2>Getting Started</h2>
+				<p>Learn the basics of the Acme SDK. Install, configure, and make your first API call in minutes.</p>
+				<span class="card-arrow">Get started &rarr;</span>
+			</a>
+			<a href="/docs/authentication" class="section-card">
+				<h2>Guides</h2>
+				<p>In-depth guides covering authentication, data fetching, error handling, and deployment strategies.</p>
+				<span class="card-arrow">Read guides &rarr;</span>
+			</a>
+			<a href="/docs/client" class="section-card">
+				<h2>API Reference</h2>
+				<p>Complete reference documentation for the Client, Endpoints, and TypeScript types.</p>
+				<span class="card-arrow">View reference &rarr;</span>
+			</a>
+		</section>
+	</div>
+</Base>

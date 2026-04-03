@@ -1,0 +1,30 @@
+---
+interface Props {
+	language?: string;
+	code: string;
+}
+
+const { language, code } = Astro.props;
+---
+<div class="code-block">
+	{language && (
+		<div class="code-block-header">
+			<span>{language}</span>
+			<button class="code-copy-btn" data-code-copy aria-label="Copy code">Copy</button>
+		</div>
+	)}
+	<pre><code>{code}</code></pre>
+</div>
+
+<script is:inline>
+	document.querySelectorAll("[data-code-copy]").forEach(function (btn) {
+		btn.addEventListener("click", function () {
+			var code = btn.closest(".code-block").querySelector("code");
+			if (code) {
+				navigator.clipboard.writeText(code.textContent || "");
+				btn.textContent = "Copied!";
+				setTimeout(function () { btn.textContent = "Copy"; }, 2000);
+			}
+		});
+	});
+</script>
